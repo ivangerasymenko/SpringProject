@@ -1,9 +1,6 @@
 package com.example.facSchedule.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class SubStudEntity {
@@ -12,6 +9,10 @@ public class SubStudEntity {
     private Long id_sub_stud;
     private Long id_subject;
     private Long id_group_stud;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private StudentEntity student;
 
     public SubStudEntity() {
     }

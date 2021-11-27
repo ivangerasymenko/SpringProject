@@ -1,10 +1,6 @@
 package com.example.facSchedule;
 
-
-// TODO: 27.11.2021 1toMany 4 studen subjSpec
-// TODO: 27.11.2021 1toMany 4 subj class
 // TODO: 27.11.2021 allServices(standarts)
-
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

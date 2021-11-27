@@ -1,9 +1,7 @@
 package com.example.facSchedule.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class SubjectEntity {
@@ -13,6 +11,8 @@ public class SubjectEntity {
     private String subject_name;
     private Integer course;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
+    private List<ClassEntity> classes;
 
     public SubjectEntity() {
     }
