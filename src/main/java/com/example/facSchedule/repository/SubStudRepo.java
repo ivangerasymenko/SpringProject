@@ -1,9 +1,9 @@
 package com.example.facSchedule.repository;
 
 
-import com.example.facSchedule.entity.SubStudEntity;
+import com.example.facSchedule.entity.PickedSubjectEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface SubStudRepo extends CrudRepository<SubStudEntity, Long>{
+public interface SubStudRepo extends CrudRepository<PickedSubjectEntity, Long>{
 }
 

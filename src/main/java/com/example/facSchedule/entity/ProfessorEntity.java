@@ -1,36 +1,34 @@
 package com.example.facSchedule.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Professor")
 public class ProfessorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_professor;
-    private String name;
+    private Long idProfessor;
+    private String ProfessorName;
     private String login;
     private String password;
 
     public ProfessorEntity() {
     }
 
-    public Long getId_professor() {
-        return id_professor;
+    public Long getIdProfessor() {
+        return idProfessor;
     }
 
-    public void setId_professor(Long id_professor) {
-        this.id_professor = id_professor;
+    public void setIdProfessor(Long idProfessor) {
+        this.idProfessor = idProfessor;
     }
 
-    public String getName() {
-        return name;
+    public String getProfessorName() {
+        return ProfessorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProfessorName(String professorName) {
+        ProfessorName = professorName;
     }
 
     public String getLogin() {

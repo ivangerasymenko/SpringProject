@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Subject")
 public class SubjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_subject;
-    private String subject_name;
+    private Long idSubject;
+    private String subjectName;
     private Integer course;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
@@ -17,20 +18,20 @@ public class SubjectEntity {
     public SubjectEntity() {
     }
 
-    public Long getId_subject() {
-        return id_subject;
+    public Long getIdSubject() {
+        return idSubject;
     }
 
-    public void setId_subject(Long id_subject) {
-        this.id_subject = id_subject;
+    public void setIdSubject(Long idSubject) {
+        this.idSubject = idSubject;
     }
 
-    public String getSubject_name() {
-        return subject_name;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setSubject_name(String subject_name) {
-        this.subject_name = subject_name;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public Integer getCourse() {
@@ -40,4 +41,13 @@ public class SubjectEntity {
     public void setCourse(Integer course) {
         this.course = course;
     }
+
+    public List<ClassEntity> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<ClassEntity> classes) {
+        this.classes = classes;
+    }
+
 }

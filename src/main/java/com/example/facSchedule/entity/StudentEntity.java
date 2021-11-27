@@ -4,37 +4,37 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Student")
 public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_student;
-    private Long id_speciality;
+    private Long idStudent;
+    private Long idSpeciality;
     private String studentName;
-    private Integer year_of_admission;
+    private Integer yearOfAdmission;
     private String login;
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private List<SubStudEntity> studentSubjects;
+    private List<PickedSubjectEntity> studentSubjects;
 
     public StudentEntity() {
     }
 
-
-    public Long getId_student() {
-        return id_student;
+    public Long getIdStudent() {
+        return idStudent;
     }
 
-    public void setId_student(Long id_student) {
-        this.id_student = id_student;
+    public void setIdStudent(Long idStudent) {
+        this.idStudent = idStudent;
     }
 
-    public Long getId_speciality() {
-        return id_speciality;
+    public Long getIdSpeciality() {
+        return idSpeciality;
     }
 
-    public void setId_speciality(Long id_speciality) {
-        this.id_speciality = id_speciality;
+    public void setIdSpeciality(Long idSpeciality) {
+        this.idSpeciality = idSpeciality;
     }
 
     public String getStudentName() {
@@ -45,12 +45,12 @@ public class StudentEntity {
         this.studentName = studentName;
     }
 
-    public Integer getYear_of_admission() {
-        return year_of_admission;
+    public Integer getYearOfAdmission() {
+        return yearOfAdmission;
     }
 
-    public void setYear_of_admission(Integer year_of_admission) {
-        this.year_of_admission = year_of_admission;
+    public void setYearOfAdmission(Integer yearOfAdmission) {
+        this.yearOfAdmission = yearOfAdmission;
     }
 
     public String getLogin() {
@@ -67,6 +67,14 @@ public class StudentEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<PickedSubjectEntity> getStudentSubjects() {
+        return studentSubjects;
+    }
+
+    public void setStudentSubjects(List<PickedSubjectEntity> studentSubjects) {
+        this.studentSubjects = studentSubjects;
     }
 
 }
