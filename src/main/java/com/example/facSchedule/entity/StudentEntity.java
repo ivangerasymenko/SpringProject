@@ -11,11 +11,14 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_student;
     private Long id_speciality;
-    private String name;
+    private String studentName;
     private Integer year_of_admission;
+    private String login;
+    private String password;
 
     public StudentEntity() {
     }
+
 
     public Long getId_student() {
         return id_student;
@@ -33,12 +36,12 @@ public class StudentEntity {
         this.id_speciality = id_speciality;
     }
 
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public Integer getYear_of_admission() {
@@ -48,4 +51,21 @@ public class StudentEntity {
     public void setYear_of_admission(Integer year_of_admission) {
         this.year_of_admission = year_of_admission;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }
