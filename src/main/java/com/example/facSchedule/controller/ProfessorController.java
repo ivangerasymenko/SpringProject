@@ -1,4 +1,4 @@
-package com.example.facSchedule.Controllers;
+package com.example.facSchedule.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 @RestController
