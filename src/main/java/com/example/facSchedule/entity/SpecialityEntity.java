@@ -21,6 +21,12 @@ public class SpecialityEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "speciality")
     List<StudentEntity> students;
 
+    /*
+{
+  "specialityName":"",
+}
+*/
+
     public SpecialityEntity() {
     }
 
@@ -50,6 +56,18 @@ public class SpecialityEntity {
 
     public List<SubjectEntity> getSubjects() {
         return subjects;
+    }
+
+    public void setSubjects(List<SubjectEntity> subjects) {
+        this.subjects = subjects;
+    }
+
+    public List<StudentEntity> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentEntity> students) {
+        this.students = students;
     }
 }
 
