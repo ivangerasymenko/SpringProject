@@ -19,7 +19,14 @@ public class ProfessorEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
     List<SubjectGroupEntity> groups;
+    /*
+{
+  "ProfessorName":"",
+  "login":"",
+  "password":"",
 
+}
+*/
     public ProfessorEntity() {
     }
 
@@ -55,5 +62,20 @@ public class ProfessorEntity {
         this.password = password;
     }
 
+    public DeaneryEntity getDeanery() {
+        return deanery;
+    }
+
+    public void setDeanery(DeaneryEntity deanery) {
+        this.deanery = deanery;
+    }
+
+    public List<SubjectGroupEntity> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<SubjectGroupEntity> groups) {
+        this.groups = groups;
+    }
 }
 
