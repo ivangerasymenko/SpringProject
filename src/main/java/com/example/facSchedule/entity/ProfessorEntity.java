@@ -1,6 +1,7 @@
 package com.example.facSchedule.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Professor")
@@ -11,6 +12,13 @@ public class ProfessorEntity {
     private String ProfessorName;
     private String login;
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "deanery_id")
+    private DeaneryEntity deanery;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
+    List<SubjectGroupEntity> groups;
 
     public ProfessorEntity() {
     }

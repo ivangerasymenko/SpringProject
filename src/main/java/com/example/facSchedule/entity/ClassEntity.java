@@ -15,8 +15,8 @@ public class ClassEntity {
     private Long idGroupStud;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private SubjectEntity subject;
+    @JoinColumn(name = "group_id")
+    private SubjectGroupEntity subjectGroup;
 
     public Long getIdClass() {
         return idClass;
@@ -56,14 +56,6 @@ public class ClassEntity {
 
     public void setIdGroupStud(Long idGroupStud) {
         this.idGroupStud = idGroupStud;
-    }
-
-    public SubjectEntity getSubject() {
-        return subject;
-    }
-
-    public void setSubject(SubjectEntity subject) {
-        this.subject = subject;
     }
 
 }

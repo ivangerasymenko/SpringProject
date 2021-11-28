@@ -15,8 +15,21 @@ public class StudentEntity {
     private String login;
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private List<PickedSubjectEntity> studentSubjects;
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+    private List<PickedSubjectEntity> pickedSubject;*/
+
+    //@ManyToMany
+    //@JoinTable(
+    //  name = "course_like",
+    //  joinColumns = @JoinColumn(name = "student_id"),
+    //  inverseJoinColumns = @JoinColumn(name = "course_id")
+
+    @ManyToMany
+    private List<SubjectGroupEntity> subjectGroups;
+
+    @ManyToOne
+    @JoinColumn(name = "speciality_id")
+    private SpecialityEntity speciality;
 
     public StudentEntity() {
     }
@@ -67,14 +80,6 @@ public class StudentEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<PickedSubjectEntity> getStudentSubjects() {
-        return studentSubjects;
-    }
-
-    public void setStudentSubjects(List<PickedSubjectEntity> studentSubjects) {
-        this.studentSubjects = studentSubjects;
     }
 
 }

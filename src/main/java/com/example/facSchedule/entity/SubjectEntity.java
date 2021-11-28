@@ -13,7 +13,14 @@ public class SubjectEntity {
     private Integer course;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
-    private List<ClassEntity> classes;
+    private List<SubjectGroupEntity> groups;
+
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
+    private List<PickedSubjectEntity> pickedSubjects;*/
+
+    @ManyToOne
+    @JoinColumn(name = "speciality_id")
+    private SpecialityEntity speciality;
 
     public SubjectEntity() {
     }
@@ -40,14 +47,6 @@ public class SubjectEntity {
 
     public void setCourse(Integer course) {
         this.course = course;
-    }
-
-    public List<ClassEntity> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(List<ClassEntity> classes) {
-        this.classes = classes;
     }
 
 }

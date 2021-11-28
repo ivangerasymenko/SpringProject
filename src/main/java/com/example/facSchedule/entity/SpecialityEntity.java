@@ -1,6 +1,7 @@
 package com.example.facSchedule.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Speciality")
@@ -9,6 +10,16 @@ public class SpecialityEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSpeciality;
     private String specialityName;
+
+    @ManyToOne
+    @JoinColumn(name = "deanery_id")
+    private DeaneryEntity deanery;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "speciality")
+    List<SubjectEntity> subjects;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "speciality")
+    List<StudentEntity> students;
 
     public SpecialityEntity() {
     }
