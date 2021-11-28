@@ -59,4 +59,11 @@ public class DeaneryEntity {
         return specialities;
     }
 
+    public void setProfessors(List<ProfessorEntity> professors) {
+        this.professors = professors;
+    }
+
+    public void setSpecialities(List<SpecialityEntity> specialities) {
+        this.specialities = specialities;
+    }
 }
