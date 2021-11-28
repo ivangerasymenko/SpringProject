@@ -18,6 +18,16 @@ public class ClassEntity {
     @JoinColumn(name = "group_id")
     private SubjectGroupEntity subjectGroup;
 
+    /*
+    {
+      "dayOfClass":"",
+      "numOfClass":"",
+
+    }
+*/
+
+
+
     public Long getIdClass() {
         return idClass;
     }
@@ -58,4 +68,11 @@ public class ClassEntity {
         this.idGroupStud = idGroupStud;
     }
 
+    public SubjectGroupEntity getSubjectGroup() {
+        return subjectGroup;
+    }
+
+    public void setSubjectGroup(SubjectGroupEntity subjectGroup) {
+        this.subjectGroup = subjectGroup;
+    }
 }

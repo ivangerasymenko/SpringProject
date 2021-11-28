@@ -19,6 +19,14 @@ public class DeaneryEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deanery")
     List<SpecialityEntity> specialities;
 
+        /*
+    {
+      "login":"",
+      "password":"",
+
+    }
+*/
+
     public Long getIdDeanery() {
         return idDeanery;
     }
