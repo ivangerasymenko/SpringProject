@@ -43,4 +43,12 @@ public class DeaneryEntity {
         this.password = password;
     }
 
+    public List<ProfessorEntity> getProfessors() {
+        return professors;
+    }
+
+    public List<SpecialityEntity> getSpecialities() {
+        return specialities;
+    }
+
 }

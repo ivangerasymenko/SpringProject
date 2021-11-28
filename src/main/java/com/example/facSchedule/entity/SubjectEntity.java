@@ -15,15 +15,14 @@ public class SubjectEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
     private List<SubjectGroupEntity> groups;
 
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
-    private List<PickedSubjectEntity> pickedSubjects;*/
+    /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
+    private List<PickedSubjectEntity> pickedSubjects; */
 
     @ManyToOne
     @JoinColumn(name = "speciality_id")
     private SpecialityEntity speciality;
 
-    public SubjectEntity() {
-    }
+    public SubjectEntity() { }
 
     public Long getIdSubject() {
         return idSubject;
@@ -47,6 +46,14 @@ public class SubjectEntity {
 
     public void setCourse(Integer course) {
         this.course = course;
+    }
+
+    public SpecialityEntity getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(SpecialityEntity speciality) {
+        this.speciality = speciality;
     }
 
 }

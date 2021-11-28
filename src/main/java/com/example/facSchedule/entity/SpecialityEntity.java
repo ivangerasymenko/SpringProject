@@ -15,10 +15,6 @@ public class SpecialityEntity {
     @JoinColumn(name = "deanery_id")
     private DeaneryEntity deanery;
 
-    public List<SubjectEntity> getSubjects() {
-        return subjects;
-    }
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "speciality")
     List<SubjectEntity> subjects;
 
@@ -44,5 +40,16 @@ public class SpecialityEntity {
         this.specialityName = specialityName;
     }
 
+    public DeaneryEntity getDeanery() {
+        return deanery;
+    }
+
+    public void setDeanery(DeaneryEntity deanery) {
+        this.deanery = deanery;
+    }
+
+    public List<SubjectEntity> getSubjects() {
+        return subjects;
+    }
 }
 

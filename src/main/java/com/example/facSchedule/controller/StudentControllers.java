@@ -17,9 +17,9 @@ public class StudentControllers {
     private StudentService studentService;
 
     @PostMapping
-    public ResponseEntity registration(@RequestBody StudentEntity student) {
+    public ResponseEntity registration(@RequestBody StudentEntity student , @RequestParam Long specialityId) {
         try {
-            studentService.registration(student);
+            studentService.registration(student, specialityId);
             return ResponseEntity.ok("Student created");
         } catch (AlreadyExistException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -29,8 +29,8 @@ public class StudentControllers {
     }
 
 
-    @GetMapping
-    public ResponseEntity getOneUser(@RequestParam String login) {
+    @GetMapping("getStudent/{login}")
+    public ResponseEntity getOneUser(@PathVariable String login) {
         try {
             return ResponseEntity.ok(studentService.getOne(login));
         } catch (NotFoundException e) {

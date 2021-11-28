@@ -15,6 +15,16 @@ public class StudentEntity {
     private String login;
     private String password;
 
+    /*
+    {
+      "idSpeciality":""
+      "studentName":""
+      "yearOfAdmission":""
+      "login":""
+      "password":""
+    }
+*/
+
     /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private List<PickedSubjectEntity> pickedSubject;*/
 
@@ -80,6 +90,10 @@ public class StudentEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setSpeciality(SpecialityEntity speciality) {
+        this.speciality = speciality;
     }
 
 }
