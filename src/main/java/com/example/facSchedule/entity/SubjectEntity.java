@@ -21,7 +21,12 @@ public class SubjectEntity {
     @ManyToOne
     @JoinColumn(name = "speciality_id")
     private SpecialityEntity speciality;
-
+    /*
+        {
+          "subjectName":"",
+          "course":"",
+        }
+    */
     public SubjectEntity() { }
 
     public Long getIdSubject() {
@@ -56,4 +61,11 @@ public class SubjectEntity {
         this.speciality = speciality;
     }
 
+    public List<SubjectGroupEntity> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<SubjectGroupEntity> groups) {
+        this.groups = groups;
+    }
 }
