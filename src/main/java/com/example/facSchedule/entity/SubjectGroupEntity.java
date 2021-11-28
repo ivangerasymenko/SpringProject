@@ -9,7 +9,7 @@ public class SubjectGroupEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGroup;
-    private String GroupName;
+    private String groupName;
 
     @ManyToOne
     @JoinColumn(name = "professor_id")
@@ -21,6 +21,9 @@ public class SubjectGroupEntity {
 
     @ManyToMany
     private List<StudentEntity> students;
+
+    public SubjectGroupEntity() {
+    }
 
     /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
     List<PickedSubjectEntity> pickedSubjects;*/
@@ -37,11 +40,11 @@ public class SubjectGroupEntity {
     }
 
     public String getGroupName() {
-        return GroupName;
+        return groupName;
     }
 
     public void setGroupName(String groupName) {
-        GroupName = groupName;
+        this.groupName = groupName;
     }
 
 }

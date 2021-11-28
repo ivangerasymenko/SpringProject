@@ -1,8 +1,8 @@
 package com.example.facSchedule.controller;
 
 import com.example.facSchedule.entity.StudentEntity;
-import com.example.facSchedule.exceptions.UserAlreadyExistException;
-import com.example.facSchedule.exceptions.UserNotFoundException;
+import com.example.facSchedule.exceptions.AlreadyExistException;
+import com.example.facSchedule.exceptions.NotFoundException;
 import com.example.facSchedule.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class StudentControllers {
         try {
             studentService.registration(student);
             return ResponseEntity.ok("Student created");
-        } catch (UserAlreadyExistException e) {
+        } catch (AlreadyExistException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Произошла ошибка" + e);
@@ -33,7 +33,7 @@ public class StudentControllers {
     public ResponseEntity getOneUser(@RequestParam String login) {
         try {
             return ResponseEntity.ok(studentService.getOne(login));
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Произошла ошибка");
