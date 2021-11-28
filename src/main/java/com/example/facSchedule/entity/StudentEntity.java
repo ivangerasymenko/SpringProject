@@ -9,37 +9,27 @@ public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idStudent;
-    private Long idSpeciality;
     private String studentName;
     private Integer yearOfAdmission;
     private String login;
     private String password;
 
-    /*
+    @ManyToOne
+    @JoinColumn(name = "speciality_id")
+    private SpecialityEntity speciality;
+
+/*
     {
-      "idSpeciality":""
-      "studentName":""
-      "yearOfAdmission":""
-      "login":""
+      "studentName":"",
+      "yearOfAdmission":"",
+      "login":"",
       "password":""
     }
 */
 
-    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private List<PickedSubjectEntity> pickedSubject;*/
-
-    //@ManyToMany
-    //@JoinTable(
-    //  name = "course_like",
-    //  joinColumns = @JoinColumn(name = "student_id"),
-    //  inverseJoinColumns = @JoinColumn(name = "course_id")
-
+    //Geter only
     @ManyToMany
     private List<SubjectGroupEntity> subjectGroups;
-
-    @ManyToOne
-    @JoinColumn(name = "speciality_id")
-    private SpecialityEntity speciality;
 
     public StudentEntity() {
     }
@@ -50,14 +40,6 @@ public class StudentEntity {
 
     public void setIdStudent(Long idStudent) {
         this.idStudent = idStudent;
-    }
-
-    public Long getIdSpeciality() {
-        return idSpeciality;
-    }
-
-    public void setIdSpeciality(Long idSpeciality) {
-        this.idSpeciality = idSpeciality;
     }
 
     public String getStudentName() {
@@ -94,6 +76,10 @@ public class StudentEntity {
 
     public void setSpeciality(SpecialityEntity speciality) {
         this.speciality = speciality;
+    }
+
+    public SpecialityEntity getSpeciality() {
+        return speciality;
     }
 
 }
