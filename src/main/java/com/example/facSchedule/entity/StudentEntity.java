@@ -20,14 +20,15 @@ public class StudentEntity {
 
 /*
     {
-      "studentName":"",
-      "yearOfAdmission":"",
-      "login":"",
-      "password":""
+        "studentName":"",
+        "yearOfAdmission":"",
+        "login":"",
+        "password":""
     }
+    additional:
+        SpecialityEntity
 */
 
-    //Geter only
     @ManyToMany
     private List<SubjectGroupEntity> subjectGroups;
 

@@ -14,23 +14,20 @@ public class SpecialityService {
 
     @Autowired
     private SpecialityRepo specialityRepo;
-
     @Autowired
     private DeaneryRepo deaneryRepo;
 
-
     public SpecialityEntity addSpeciality(SpecialityEntity speciality, Long deaneryId) throws Exception {
-        if (specialityRepo.findBySpecialityName(speciality.getSpecialityName()) != null) {
-            throw new AlreadyExistException("Така спеціальність вже існує!");
-        }
-
+        if (specialityRepo.findBySpecialityName(speciality.getSpecialityName()) != null) throw new AlreadyExistException("Така спеціальність вже існує!");
         DeaneryEntity deanery = deaneryRepo.findByIdDeanery(deaneryId);
-        if (deanery == null) {
-            throw new NotFoundException("Не коректний деканат");
-        }
-
+        if (deanery == null) throw new NotFoundException("Не коректний деканат");
         speciality.setDeanery(deanery);
         return specialityRepo.save(speciality);
-
     }
+
+    public Long delete(Long id) {
+        specialityRepo.deleteById(id);
+        return id;
+    }
+
 }

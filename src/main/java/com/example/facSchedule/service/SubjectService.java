@@ -23,16 +23,10 @@ public class SubjectService {
 
     public SubjectEntity addSubject(SubjectEntity subject, Long idSpeciality) throws NotFoundException,AlreadyExistException {
         SpecialityEntity specialityEntity = specialityRepo.findByIdSpeciality(idSpeciality);
-        if (specialityEntity == null) {
-            throw new NotFoundException("No such speciality!");
-        }
+        if (specialityEntity == null) throw new NotFoundException("No such speciality!");
         String inputSubjectName = subject.getSubjectName();
         List<SubjectEntity> subjects = specialityEntity.getSubjects();
-        if (subjects.stream().anyMatch( sub -> sub.getSubjectName().equals(inputSubjectName))) {
-            throw new AlreadyExistException("Subject already exist on this speciality!");
-        }
-
-
+        if (subjects.stream().anyMatch(sub -> sub.getSubjectName().equals(inputSubjectName))) throw new AlreadyExistException("Subject already exist on this speciality!");
         subject.setSpeciality(specialityEntity);
         return subjectRepo.save(subject);
 
@@ -40,15 +34,13 @@ public class SubjectService {
 
     public SubjectEntity getOneSubject(Long id) throws NotFoundException {
         SubjectEntity subject = subjectRepo.findByIdSubject(id);
-        if (subject == null) {
-            throw new NotFoundException("No such subject");
-        }
+        if (subject == null) throw new NotFoundException("No such subject");
         return subject;
     }
-
 
     public Long delete(Long id) {
         subjectRepo.deleteById(id);
         return id;
     }
+
 }

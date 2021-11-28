@@ -19,22 +19,22 @@ public class SubjectGroupEntity {
     @JoinColumn(name = "subject_id")
     private SubjectEntity subject;
 
-    /*
+/*
     {
-      "groupName":"",
+        "groupName":""
     }
+    additional:
+        ProfessorEntity
+        SubjectEntity
 */
+
     @ManyToMany
     private List<StudentEntity> students;
 
-    public SubjectGroupEntity() {
-    }
-
-    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
-    List<PickedSubjectEntity> pickedSubjects;*/
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subjectGroup")
     private List<ClassEntity> classes;
+
+    public SubjectGroupEntity() { }
 
     public Long getIdGroup() {
         return idGroup;

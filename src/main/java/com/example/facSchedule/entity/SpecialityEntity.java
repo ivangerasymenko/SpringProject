@@ -15,18 +15,19 @@ public class SpecialityEntity {
     @JoinColumn(name = "deanery_id")
     private DeaneryEntity deanery;
 
+/*
+    {
+        "specialityName":""
+    }
+     additional:
+        DeaneryEntity
+*/
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "speciality")
     List<SubjectEntity> subjects;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "speciality")
     List<StudentEntity> students;
-
-    /*
-{
-  "specialityName":"",
-}
-*/
-
     public SpecialityEntity() {
     }
 

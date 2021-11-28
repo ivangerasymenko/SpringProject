@@ -13,10 +13,8 @@ import java.util.List;
 @Service
 public class DeaneryService {
 
-
     @Autowired
     private DeaneryRepo deaneryRepo;
-
     @Autowired
     private SpecialityRepo specialityRepo;
 

@@ -12,21 +12,22 @@ public class SubjectEntity {
     private String subjectName;
     private Integer course;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
-    private List<SubjectGroupEntity> groups;
-
-    /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
-    private List<PickedSubjectEntity> pickedSubjects; */
-
     @ManyToOne
     @JoinColumn(name = "speciality_id")
     private SpecialityEntity speciality;
-    /*
-        {
-          "subjectName":"",
-          "course":"",
-        }
-    */
+
+/*
+    {
+        "subjectName":"",
+        "course":""
+    }
+    additional:
+        SpecialityEntity
+*/
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
+    private List<SubjectGroupEntity> groups;
+
     public SubjectEntity() { }
 
     public Long getIdSubject() {

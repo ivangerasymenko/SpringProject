@@ -2,6 +2,7 @@ package com.example.facSchedule.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Class")
@@ -9,24 +10,21 @@ public class ClassEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idClass;
-    private Long idProfessor;
     private Date dayOfClass;
     private Integer numOfClass;
-    private Long idGroupStud;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
     private SubjectGroupEntity subjectGroup;
 
-    /*
+/*
     {
-      "dayOfClass":"",
-      "numOfClass":"",
-
+        "dayOfClass":"",
+        "numOfClass":""
     }
+    additional:
+        SubjectGroupEntity
 */
-
-
 
     public Long getIdClass() {
         return idClass;
@@ -34,14 +32,6 @@ public class ClassEntity {
 
     public void setIdClass(Long idClass) {
         this.idClass = idClass;
-    }
-
-    public Long getIdProfessor() {
-        return idProfessor;
-    }
-
-    public void setIdProfessor(Long idProfessor) {
-        this.idProfessor = idProfessor;
     }
 
     public Date getDayOfClass() {
@@ -60,14 +50,6 @@ public class ClassEntity {
         this.numOfClass = numOfClass;
     }
 
-    public Long getIdGroupStud() {
-        return idGroupStud;
-    }
-
-    public void setIdGroupStud(Long idGroupStud) {
-        this.idGroupStud = idGroupStud;
-    }
-
     public SubjectGroupEntity getSubjectGroup() {
         return subjectGroup;
     }
@@ -75,4 +57,5 @@ public class ClassEntity {
     public void setSubjectGroup(SubjectGroupEntity subjectGroup) {
         this.subjectGroup = subjectGroup;
     }
+
 }

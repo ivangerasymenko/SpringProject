@@ -13,19 +13,18 @@ public class DeaneryEntity {
     private String login;
     private String password;
 
+/*
+    {
+        "login":"",
+        "password":""
+    }
+*/
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deanery")
     List<ProfessorEntity> professors;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deanery")
     List<SpecialityEntity> specialities;
-
-        /*
-    {
-      "login":"",
-      "password":"",
-
-    }
-*/
 
     public Long getIdDeanery() {
         return idDeanery;

@@ -17,16 +17,20 @@ public class ProfessorEntity {
     @JoinColumn(name = "deanery_id")
     private DeaneryEntity deanery;
 
+/*
+    {
+        "ProfessorName":"",
+        "login":"",
+        "password":""
+    }
+     additional:
+        DeaneryEntity
+*/
+
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
     List<SubjectGroupEntity> groups;
-    /*
-{
-  "ProfessorName":"",
-  "login":"",
-  "password":"",
 
-}
-*/
     public ProfessorEntity() {
     }
 

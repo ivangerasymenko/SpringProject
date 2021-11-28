@@ -20,21 +20,15 @@ public class StudentService {
 
     public StudentEntity registration (StudentEntity student, Long specialityId) throws AlreadyExistException, NotFoundException {
         SpecialityEntity speciality = specialityRepo.findByIdSpeciality(specialityId);
-        if (speciality == null) {
-            throw new NotFoundException("No such speciality!");
-        }
-        if (studentRepo.findByLogin(student.getLogin()) != null) {
-            throw new AlreadyExistException("Користувач з таким логіном вже існує");
-        }
+        if (speciality == null) throw new NotFoundException("No such speciality!");
+        if (studentRepo.findByLogin(student.getLogin()) != null) throw new AlreadyExistException("Користувач з таким логіном вже існує");
         student.setSpeciality(speciality);
         return studentRepo.save(student);
     }
 
     public StudentEntity getOne(String login) throws NotFoundException {
         StudentEntity student = studentRepo.findByLogin(login);
-        if (student == null) {
-            throw new NotFoundException("Пользователь не найден");
-        }
+        if (student == null) throw new NotFoundException("Пользователь не найден");
         return student;
     }
 
