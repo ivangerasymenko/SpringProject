@@ -29,7 +29,7 @@ private SubjectRepo subjectRepo;
         SubjectEntity subject = subjectRepo.findByIdSubject(idSubject);
         if (professor == null) throw new NotFoundException("No such professor!");
         if (subject == null) throw new NotFoundException("No such subject!");
-        if (subjectRepo.findByIdSubject(subjectGroup.getIdGroup()) != null) throw new AlreadyExistException("No such subject!");
+        if ( subjectGroupRepo.findByGroupName(subjectGroup.getGroupName()) != null ) throw new AlreadyExistException("No such subject!");
         subjectGroup.setSubject(subject);
         subjectGroup.setProfessor(professor);
         return subjectGroupRepo.save(subjectGroup);

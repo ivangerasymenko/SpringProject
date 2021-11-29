@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface StudentRepo extends CrudRepository<StudentEntity, Long>
 {
     StudentEntity findByLogin(String login);
+    StudentEntity findByIdStudent(Long idStudent);
 }

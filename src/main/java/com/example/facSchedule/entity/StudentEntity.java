@@ -29,8 +29,8 @@ public class StudentEntity {
         SpecialityEntity
 */
 
-    @ManyToMany
-    private List<SubjectGroupEntity> subjectGroups;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+    private List<PickedGroupEntity> pickedGroups;
 
     public StudentEntity() {
     }

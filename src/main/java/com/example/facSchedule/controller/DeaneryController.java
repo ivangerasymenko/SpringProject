@@ -1,8 +1,6 @@
 package com.example.facSchedule.controller;
 
-import com.example.facSchedule.entity.SpecialityEntity;
-import com.example.facSchedule.entity.SubjectEntity;
-import com.example.facSchedule.entity.SubjectGroupEntity;
+import com.example.facSchedule.entity.*;
 import com.example.facSchedule.exceptions.AlreadyExistException;
 import com.example.facSchedule.exceptions.NotFoundException;
 import com.example.facSchedule.service.*;
@@ -28,14 +26,38 @@ public class DeaneryController {
     private SubjectService subjectService;
     @Autowired
     private SubjectGroupService subjectGroupService;
+    @Autowired
+    private StudentService studentService;
 
-    @PostMapping("")
+
+
+    @PostMapping("/registerProfessor")
+    public ResponseEntity registerProfessor(@RequestBody ProfessorEntity professor) {
+        try {
+            professorService.registration(professor);
+            return ResponseEntity.ok("Professor created");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/registerStudent")
+    public ResponseEntity registerStudent(@RequestBody StudentEntity student , @RequestParam Long specialityId) {
+        try {
+            studentService.registration(student, specialityId);
+            return ResponseEntity.ok("Student created");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/addSpeciality")
     public ResponseEntity addSpeciality(@RequestBody SpecialityEntity speciality) {
         try {
             specialityService.addSpeciality(speciality);
             return ResponseEntity.ok("Speciality created");
-        } catch (AlreadyExistException e) {
-            return ResponseEntity.badRequest().body("Huinya pazany"+ e);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
@@ -45,7 +67,7 @@ public class DeaneryController {
             subjectService.addSubject(subject, idSpeciality);
             return ResponseEntity.ok("Subject" + subject.getSubjectName() + " created in speciality with id " + idSpeciality);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошol trulling" + e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
@@ -55,9 +77,9 @@ public class DeaneryController {
     public ResponseEntity addGroupToSubject(@RequestBody SubjectGroupEntity subjectGroup, @RequestParam Long idSubject, @RequestParam Long idProfessor) {
         try {
             subjectGroupService.addGroupToSubject(subjectGroup, idSubject, idProfessor);
-            return ResponseEntity.ok("Subject" + subjectGroup.getGroupName() + " created in subject with id " + idSubject);
+            return ResponseEntity.ok("Group: (" + subjectGroup.getGroupName() + ") for subject with id: (" + idSubject + ") created" );
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошol trulling" + e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
@@ -65,10 +87,8 @@ public class DeaneryController {
     public ResponseEntity getSpecialities() {
         try {
             return ResponseEntity.ok(specialityService.getAllSpeciality());
-        } catch (NotFoundException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошла ошибка");
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

@@ -28,11 +28,11 @@ public class SubjectGroupEntity {
         SubjectEntity
 */
 
-    @ManyToMany
-    private List<StudentEntity> students;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subjectGroup")
     private List<ClassEntity> classes;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subjectGroup")
+    private List<PickedGroupEntity> pickedGroups;
 
     public SubjectGroupEntity() { }
 
@@ -66,14 +66,6 @@ public class SubjectGroupEntity {
 
     public void setSubject(SubjectEntity subject) {
         this.subject = subject;
-    }
-
-    public List<StudentEntity> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<StudentEntity> students) {
-        this.students = students;
     }
 
     public List<ClassEntity> getClasses() {

@@ -1,8 +1,7 @@
 package com.example.facSchedule.controller;
 
-import com.example.facSchedule.entity.StudentEntity;
-import com.example.facSchedule.exceptions.AlreadyExistException;
 import com.example.facSchedule.exceptions.NotFoundException;
+import com.example.facSchedule.service.PickedGroupService;
 import com.example.facSchedule.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,24 +12,24 @@ import org.springframework.http.ResponseEntity;
 //TODO check schedule
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/student")
 public class StudentControllers {
 
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private PickedGroupService pickedGroupService;
 
-    @PostMapping
-    public ResponseEntity registration(@RequestBody StudentEntity student , @RequestParam Long specialityId) {
+    @PostMapping("/enrollMe/{idStudent}")
+    public ResponseEntity registration(@PathVariable Long idStudent, @RequestParam Long idGroup) {
         try {
-            studentService.registration(student, specialityId);
-            return ResponseEntity.ok("Student created");
-        } catch (AlreadyExistException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
+            pickedGroupService.studentEnrollsGroup(idStudent, idGroup);
+            return ResponseEntity.ok("Student enrolled!");
+        }
+        catch (Exception e) {
             return ResponseEntity.badRequest().body("Произошла ошибка" + e);
         }
     }
-
 
     @GetMapping("getStudent/{login}")
     public ResponseEntity getOneUser(@PathVariable String login) {

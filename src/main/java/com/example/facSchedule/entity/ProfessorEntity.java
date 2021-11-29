@@ -19,8 +19,6 @@ public class ProfessorEntity {
         "login":"",
         "password":""
     }
-     additional:
-        DeaneryEntity
 */
 
 
