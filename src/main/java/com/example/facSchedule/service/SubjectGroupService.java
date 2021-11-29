@@ -24,7 +24,7 @@ private ProfessorRepo professorRepo;
 @Autowired
 private SubjectRepo subjectRepo;
 
-    public SubjectGroupEntity add(SubjectGroupEntity subjectGroup, Long idSubject, Long idProfessor) throws AlreadyExistException, NotFoundException {
+    public SubjectGroupEntity addGroupToSubject(SubjectGroupEntity subjectGroup, Long idSubject, Long idProfessor) throws AlreadyExistException, NotFoundException {
         ProfessorEntity professor = professorRepo.findByIdProfessor(idProfessor);
         SubjectEntity subject = subjectRepo.findByIdSubject(idSubject);
         if (professor == null) throw new NotFoundException("No such professor!");
