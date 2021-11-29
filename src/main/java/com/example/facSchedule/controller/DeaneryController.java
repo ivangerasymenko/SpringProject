@@ -2,6 +2,7 @@ package com.example.facSchedule.controller;
 
 import com.example.facSchedule.entity.SpecialityEntity;
 import com.example.facSchedule.entity.SubjectEntity;
+import com.example.facSchedule.entity.SubjectGroupEntity;
 import com.example.facSchedule.exceptions.AlreadyExistException;
 import com.example.facSchedule.exceptions.NotFoundException;
 import com.example.facSchedule.service.*;
@@ -19,6 +20,8 @@ public class DeaneryController {
     private ProfessorService professorService;
     @Autowired
     private SubjectService subjectService;
+    @Autowired
+    private SubjectGroupService subjectGroupService;
 
     @PostMapping("")
     public ResponseEntity addSpeciality(@RequestBody SpecialityEntity speciality) {
@@ -35,6 +38,16 @@ public class DeaneryController {
         try {
             subjectService.addSubject(subject, idSpeciality);
             return ResponseEntity.ok("Subject" + subject.getSubjectName() + " created in speciality with id " + idSpeciality);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошol trulling" + e);
+        }
+    }
+
+    @PostMapping("/addSubjectToGroup/")
+    public ResponseEntity addSubjectToGroup(@RequestBody SubjectGroupEntity subjectGroup, @RequestParam Long idSubject, @RequestParam Long idProfessor) {
+        try {
+            subjectGroupService.add(subjectGroup, idSubject, idProfessor);
+            return ResponseEntity.ok("Subject" + subjectGroup.getGroupName() + " created in subject with id " + idSubject);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Произошol trulling" + e);
         }
