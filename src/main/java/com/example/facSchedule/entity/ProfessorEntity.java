@@ -13,10 +13,6 @@ public class ProfessorEntity {
     private String login;
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "deanery_id")
-    private DeaneryEntity deanery;
-
 /*
     {
         "ProfessorName":"",
@@ -66,13 +62,6 @@ public class ProfessorEntity {
         this.password = password;
     }
 
-    public DeaneryEntity getDeanery() {
-        return deanery;
-    }
-
-    public void setDeanery(DeaneryEntity deanery) {
-        this.deanery = deanery;
-    }
 
     public List<SubjectGroupEntity> getGroups() {
         return groups;

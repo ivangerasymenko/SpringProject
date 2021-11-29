@@ -1,22 +1,18 @@
 package com.example.facSchedule.controller;
 
-import com.example.facSchedule.entity.DeaneryEntity;
 import com.example.facSchedule.entity.SpecialityEntity;
 import com.example.facSchedule.entity.SubjectEntity;
 import com.example.facSchedule.exceptions.AlreadyExistException;
+import com.example.facSchedule.exceptions.NotFoundException;
 import com.example.facSchedule.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/deanery")
 public class DeaneryController {
 
-    @Autowired
-    private DeaneryService deaneryService;
     @Autowired
     private SpecialityService specialityService;
     @Autowired
@@ -24,23 +20,13 @@ public class DeaneryController {
     @Autowired
     private SubjectService subjectService;
 
-    @PostMapping
-    public ResponseEntity  registration(@RequestBody DeaneryEntity deanery) {
+    @PostMapping("")
+    public ResponseEntity addSpeciality(@RequestBody SpecialityEntity speciality) {
         try {
-            deaneryService.registration(deanery);
-            return ResponseEntity.ok("Deanery created");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошol trulling" + e);
-        }
-    }
-
-    @PostMapping("/{id}")
-    public ResponseEntity addSpeciality(@RequestBody SpecialityEntity speciality, @PathVariable Long id) {
-        try {
-            specialityService.addSpeciality(speciality,id);
+            specialityService.addSpeciality(speciality);
             return ResponseEntity.ok("Speciality created");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e);
+        } catch (AlreadyExistException e) {
+            return ResponseEntity.badRequest().body("Huinya pazany"+ e);
         }
     }
 
@@ -54,10 +40,15 @@ public class DeaneryController {
         }
     }
 
-
-    @GetMapping
-    public ResponseEntity getAllSpecialities(@RequestParam Long deaneryId) throws AlreadyExistException {
-        return (ResponseEntity) deaneryService.getAllSpeciality(deaneryId);
+    @GetMapping("/getSpecialities")
+    public ResponseEntity getSpecialities() {
+        try {
+            return ResponseEntity.ok(specialityService.getAllSpeciality());
+        } catch (NotFoundException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
     }
 
 /*

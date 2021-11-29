@@ -11,9 +11,6 @@ public class SpecialityEntity {
     private Long idSpeciality;
     private String specialityName;
 
-    @ManyToOne
-    @JoinColumn(name = "deanery_id")
-    private DeaneryEntity deanery;
 
 /*
     {
@@ -45,14 +42,6 @@ public class SpecialityEntity {
 
     public void setSpecialityName(String specialityName) {
         this.specialityName = specialityName;
-    }
-
-    public DeaneryEntity getDeanery() {
-        return deanery;
-    }
-
-    public void setDeanery(DeaneryEntity deanery) {
-        this.deanery = deanery;
     }
 
     public List<SubjectEntity> getSubjects() {

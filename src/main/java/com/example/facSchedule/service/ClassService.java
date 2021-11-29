@@ -25,11 +25,11 @@ public class ClassService {
 
     public ClassEntity addClass(ClassEntity Class, Long subjectGroupId) throws AlreadyExistException, NotFoundException {
         SubjectGroupEntity subjectGroup = subjectGroupRepo.findByIdGroup(subjectGroupId);
+        if(subjectGroup==null) throw new NotFoundException("No such group!");
         Date fdoc = Class.getDayOfClass();
         Integer fnoc = Class.getNumOfClass();
-        if(subjectGroup==null) throw new NotFoundException("No such group!");
         for (ClassEntity ce : subjectGroup.getClasses()) {
-            if((ce.getDayOfClass() == fdoc) && (ce.getNumOfClass() == fnoc)) throw new AlreadyExistException("Class already exist on this group!");
+            if((ce.getDayOfClass() == fdoc) && (ce.getNumOfClass() == fnoc)) throw new AlreadyExistException("Class already exist for this time on this group!");
         }
         Class.setSubjectGroup(subjectGroup);
         return classRepo.save(Class);
