@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface SubjectGroupRepo extends CrudRepository<SubjectGroupEntity, Long>
 {
     SubjectGroupEntity findByIdGroup(Long idGroup);
-    SubjectEntity findByGroupName(String groupName);
+    SubjectGroupEntity findByGroupName(String groupName);
+    SubjectGroupEntity findByGroupNameAndSubject(String groupName, SubjectEntity subjectEntity);
     Iterable<SubjectGroupEntity> findAllBySubject(SubjectEntity subject);
 }

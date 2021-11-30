@@ -76,7 +76,7 @@ public class DeaneryController {
     public ResponseEntity addGroupToSubject(@RequestBody SubjectGroupEntity subjectGroup, @RequestParam Long idSubject, @RequestParam Long idProfessor) {
         try {
             subjectGroupService.addGroupToSubject(subjectGroup, idSubject, idProfessor);
-            return ResponseEntity.ok("Group: (" + subjectGroup.getGroupName() + ") for subject with id: (" + idSubject + ") created" );
+            return ResponseEntity.ok("Group \"" + subjectGroup.getGroupName() + "\" added to this subject" );
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
