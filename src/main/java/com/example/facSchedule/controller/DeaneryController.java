@@ -91,6 +91,15 @@ public class DeaneryController {
         }
     }
 
+    @GetMapping("/getProfessors")
+    public ResponseEntity getProfessors() {
+        try {
+            return ResponseEntity.ok(professorService.getAllProfessors());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @GetMapping("/getSubjects/{idSpeciality}")
     public ResponseEntity getSubjects(@PathVariable Long idSpeciality) {
         try {
