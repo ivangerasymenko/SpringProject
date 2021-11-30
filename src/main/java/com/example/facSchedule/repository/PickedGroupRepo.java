@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface PickedGroupRepo extends CrudRepository<PickedGroupEntity, Long>
 {
     PickedGroupEntity findByStudentAndSubjectGroup(StudentEntity student, SubjectGroupEntity subjectGroup);
+    PickedGroupEntity findByStudent(StudentEntity student);
+    PickedGroupEntity findBySubjectGroup(SubjectGroupEntity subjectGroup);
 }

@@ -6,7 +6,7 @@ public class SubjectGroupModel {
     private Long idGroup;
     private String groupName;
 
-    public SubjectGroupModel toModel(SubjectGroupEntity subjectGroupEntity){
+    public static SubjectGroupModel toModel(SubjectGroupEntity subjectGroupEntity){
         SubjectGroupModel model = new SubjectGroupModel();
         model.setIdGroup(subjectGroupEntity.getIdGroup());
         model.setGroupName(subjectGroupEntity.getGroupName());

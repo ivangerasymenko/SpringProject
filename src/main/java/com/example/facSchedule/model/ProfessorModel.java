@@ -7,7 +7,7 @@ public class ProfessorModel {
     private String ProfessorName;
     private String login;
 
-    public ProfessorModel toModel(ProfessorEntity professorEntity) {
+    public static ProfessorModel toModel(ProfessorEntity professorEntity) {
         ProfessorModel model = new ProfessorModel();
         model.setIdProfessor(professorEntity.getIdProfessor());
         model.setProfessorName(professorEntity.getProfessorName());

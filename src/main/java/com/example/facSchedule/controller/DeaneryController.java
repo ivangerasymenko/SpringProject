@@ -92,6 +92,24 @@ public class DeaneryController {
         }
     }
 
+    @GetMapping("/getSubjects/{idSpeciality}")
+    public ResponseEntity getSubjects(@PathVariable Long idSpeciality) {
+        try {
+            return ResponseEntity.ok(subjectService.getSpecialitySubjects(idSpeciality));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/getSubjectGroup/{idSubject}")
+    public ResponseEntity getSubjectGroup(@PathVariable Long idSubject) {
+        try {
+            return ResponseEntity.ok(subjectGroupService.getSubjectGroup(idSubject));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 /*
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id) {

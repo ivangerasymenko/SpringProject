@@ -7,7 +7,7 @@ public class SubjectModel {
     private String subjectName;
     private Integer course;
 
-    public SubjectModel toModel(SubjectEntity subjectEntity){
+    public static SubjectModel toModel(SubjectEntity subjectEntity){
         SubjectModel model = new SubjectModel();
         model.setIdSubject(subjectEntity.getIdSubject());
         model.setSubjectName(subjectEntity.getSubjectName());

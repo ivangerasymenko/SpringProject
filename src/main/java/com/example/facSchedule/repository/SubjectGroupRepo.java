@@ -8,4 +8,5 @@ public interface SubjectGroupRepo extends CrudRepository<SubjectGroupEntity, Lon
 {
     SubjectGroupEntity findByIdGroup(Long idGroup);
     SubjectEntity findByGroupName(String groupName);
+    Iterable<SubjectGroupEntity> findAllBySubject(SubjectEntity subject);
 }
