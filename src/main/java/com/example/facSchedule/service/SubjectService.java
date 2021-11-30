@@ -25,7 +25,6 @@ public class SubjectService {
     @Autowired
     private SpecialityRepo specialityRepo;
 
-    //TODO вронг чек
     public SubjectEntity addSubject(SubjectEntity subject, Long idSpeciality) throws NotFoundException,AlreadyExistException {
         SpecialityEntity specialityEntity = specialityRepo.findByIdSpeciality(idSpeciality);
         if (specialityEntity == null) throw new NotFoundException("No such speciality!");
