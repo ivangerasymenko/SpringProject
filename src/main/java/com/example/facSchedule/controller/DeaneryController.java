@@ -65,14 +65,13 @@ public class DeaneryController {
     public ResponseEntity addSubjectToSpeciality(@RequestBody SubjectEntity subject, @PathVariable Long idSpeciality) {
         try {
             subjectService.addSubject(subject, idSpeciality);
-            return ResponseEntity.ok("Subject" + subject.getSubjectName() + " created in speciality with id " + idSpeciality);
+            return ResponseEntity.ok("Subject \"" + subject.getSubjectName() + "\" added to this speciality");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
 
-    ///TODO test this
     @PostMapping("/addGroupToSubject")
     public ResponseEntity addGroupToSubject(@RequestBody SubjectGroupEntity subjectGroup, @RequestParam Long idSubject, @RequestParam Long idProfessor) {
         try {
